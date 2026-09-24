@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "stayluma",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "4173"],
+      "runtimeExecutable": "ruby",
+      "runtimeArgs": ["-run", "-e", "httpd", ".", "-p", "4173"],
       "port": 4173
     }
   ]

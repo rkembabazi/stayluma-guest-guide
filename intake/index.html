@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>StayLuma Intake</title>
+<meta name="description" content="Tell us about your property and we'll turn it into a StayLuma guest guide." />
+<link rel="stylesheet" href="../assets/css/tokens.css" />
+<link rel="stylesheet" href="../assets/css/intake.css" />
+</head>
+<body>
+
+<a class="skip-link" href="#ik-main">Skip to content</a>
+
+<header class="ik-topbar">
+  <div class="ik-topbar__inner">
+    <span class="brandmark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 5v10a1 1 0 0 1-1 1h-4v-6H10v6H6a1 1 0 0 1-1-1V8z"/></svg>
+      StayLuma
+    </span>
+    <span class="ik-topbar__step" id="ik-step-label"></span>
+  </div>
+</header>
+<div class="ik-progress"><div class="ik-progress__bar" id="ik-progress-bar"></div></div>
+
+<div class="ik-draft-banner" id="ik-draft-banner" hidden>
+  <span>You have a saved draft from earlier on this device.</span>
+  <span style="display:flex; gap:8px;">
+    <button type="button" id="ik-draft-resume">Resume</button>
+    <button type="button" class="ghost" id="ik-draft-discard">Start over</button>
+  </span>
+</div>
+
+<main class="ik-page" id="ik-main">
+  <nav class="ik-stepnav" id="ik-stepnav" aria-label="Form steps"></nav>
+  <form id="ik-form" novalidate>
+    <div class="ik-step" id="ik-step-content"></div>
+  </form>
+</main>
+
+<div class="ik-nav">
+  <button type="button" class="ik-nav__back" id="ik-back">Back</button>
+  <button type="button" class="ik-nav__next" id="ik-next">Continue</button>
+</div>
+
+<script src="../assets/js/icons.js"></script>
+<script src="intake.js"></script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+/* ============================================================
+   Host intake wizard — component styles only. Builds on
+   assets/css/tokens.css.
+   ============================================================ */
+
+.ik-topbar {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 30;
+  background: var(--navy);
+  color: var(--ink-on-navy);
+  padding-block: 12px;
+}
+.ik-topbar__inner {
+  max-width: 720px;
+  margin-inline: auto;
+  padding-inline: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.ik-topbar .brandmark { opacity: 1; }
+.ik-topbar__step { font-size: 0.82rem; font-weight: 600; opacity: 0.85; }
+
+.ik-progress {
+  height: 4px;
+  background: var(--border);
+  position: relative;
+}
+.ik-progress__bar {
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.25s ease;
+}
+
+.ik-page { max-width: 640px; margin-inline: auto; padding: 28px 20px 120px; }
+
+.ik-stepnav {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  margin-bottom: 26px;
+  scrollbar-width: none;
+}
+.ik-stepnav::-webkit-scrollbar { display: none; }
+.ik-stepnav__item {
+  flex: none;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-raised);
+  color: var(--ink-soft);
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.ik-stepnav__item[aria-current="true"] { background: var(--accent); border-color: var(--accent); color: #fff9ef; }
+.ik-stepnav__item[data-done="true"]:not([aria-current="true"]) { color: var(--accent-2-ink); border-color: var(--accent-2); }
+
+.ik-step h2 { font-size: 1.5rem; font-weight: 600; }
+.ik-step > p.ik-step__intro { color: var(--ink-soft); margin-top: 8px; font-size: 0.95rem; }
+
+.ik-field { margin-top: 20px; }
+.ik-field label { display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 6px; }
+.ik-field .ik-hint { display: block; font-weight: 400; font-size: 0.8rem; color: var(--ink-soft); margin-top: 3px; }
+.ik-field input[type="text"],
+.ik-field input[type="tel"],
+.ik-field input[type="url"],
+.ik-field input[type="file"],
+.ik-field textarea,
+.ik-field select {
+  width: 100%;
+  padding: 11px 13px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface-raised);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.95rem;
+}
+.ik-field textarea { min-height: 90px; resize: vertical; }
+.ik-field input:focus, .ik-field textarea:focus, .ik-field select:focus { outline: 3px solid var(--focus-ring); outline-offset: 1px; }
+.ik-field[data-invalid="true"] input,
+.ik-field[data-invalid="true"] textarea { border-color: var(--danger); }
+.ik-field__error { display: none; font-size: 0.8rem; color: var(--danger); margin-top: 5px; }
+.ik-field[data-invalid="true"] .ik-field__error { display: block; }
+
+.ik-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 480px) { .ik-row { grid-template-columns: 1fr; } }
+
+.ik-photo-preview {
+  margin-top: 10px;
+  width: 100%;
+  max-width: 220px;
+  aspect-ratio: 16/10;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  display: none;
+}
+.ik-photo-preview[data-show="true"] { display: block; }
+
+.ik-repeat { display: flex; flex-direction: column; gap: 14px; margin-top: 18px; }
+.ik-repeat__item {
+  padding: 16px;
+  border-radius: 14px;
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  position: relative;
+}
+.ik-repeat__remove {
+  position: absolute;
+  top: 12px; right: 12px;
+  border: none;
+  background: transparent;
+  color: var(--danger);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.ik-repeat__add {
+  margin-top: 6px;
+  align-self: flex-start;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px dashed var(--border);
+  background: transparent;
+  color: var(--ink-soft);
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.ik-nav {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 40;
+  display: flex;
+  gap: 10px;
+  max-width: 720px;
+  margin-inline: auto;
+  padding: 12px 20px calc(12px + env(safe-area-inset-bottom, 0px));
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--border);
+}
+.ik-nav button {
+  flex: 1;
+  padding: 13px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  border: 1px solid var(--border);
+  cursor: pointer;
+}
+.ik-nav__back { background: var(--surface-raised); color: var(--ink); flex: none; min-width: 90px; }
+.ik-nav__next { background: var(--accent); color: #fff9ef; border-color: var(--accent); }
+.ik-nav__back:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.ik-draft-banner {
+  max-width: 640px;
+  margin: 16px auto 0;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: var(--surface-alt);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.88rem;
+}
+.ik-draft-banner button { border: none; background: var(--accent); color: #fff9ef; padding: 7px 14px; border-radius: 999px; font-weight: 700; font-size: 0.82rem; cursor: pointer; }
+.ik-draft-banner button.ghost { background: transparent; color: var(--ink-soft); }
+
+.ik-review dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; font-size: 0.9rem; }
+.ik-review dt { color: var(--ink-soft); font-weight: 600; }
+.ik-review dd { margin: 0; }
+.ik-review h3 { font-size: 1rem; margin-top: 22px; margin-bottom: 8px; }
+.ik-review h3:first-child { margin-top: 0; }
+
+.ik-download-btn {
+  margin-top: 28px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff9ef;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+.ik-download-btn svg { width: 17px; height: 17px; }
+
+.ik-success {
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 14px;
+  background: var(--surface-alt);
+  border-left: 3px solid var(--success);
+  font-size: 0.9rem;
+}

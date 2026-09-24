@@ -1,0 +1,166 @@
+/* ============================================================
+   Sales landing page — component styles only. Builds on
+   assets/css/tokens.css.
+   ============================================================ */
+
+.lp-page { max-width: 1040px; margin-inline: auto; padding-inline: 20px; }
+
+.lp-topbar {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 30;
+  background: var(--navy);
+  color: var(--ink-on-navy);
+  padding-block: 14px;
+}
+.lp-topbar__inner {
+  max-width: 1040px;
+  margin-inline: auto;
+  padding-inline: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.lp-topbar .brandmark { font-size: 1.05rem; opacity: 1; }
+.lp-topbar__cta {
+  padding: 9px 16px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff9ef;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* ---------- hero ---------- */
+
+.lp-hero { padding-block: 56px 40px; display: flex; flex-direction: column; gap: 18px; max-width: 640px; }
+.lp-hero h1 { font-size: clamp(2.2rem, 6vw, 3.2rem); font-weight: 600; line-height: 1.06; }
+.lp-hero p { font-size: 1.1rem; color: var(--ink-soft); max-width: 54ch; }
+.lp-hero__ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 6px; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.btn svg { width: 17px; height: 17px; }
+.btn--primary { background: var(--accent); color: #fff9ef; border-color: var(--accent); }
+.btn--ghost { background: var(--surface-raised); color: var(--ink); border-color: var(--border); }
+
+/* ---------- section shell ---------- */
+
+.lp-section { padding-block: 48px; }
+.lp-section + .lp-section { border-top: 1px solid var(--border); }
+.lp-section__head { max-width: 640px; margin-bottom: 30px; }
+.lp-section__head h2 { font-size: clamp(1.5rem, 4vw, 2.1rem); font-weight: 600; }
+.lp-section__head p { color: var(--ink-soft); margin-top: 8px; font-size: 1.02rem; }
+
+/* ---------- feature grid ---------- */
+
+.lp-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+@media (max-width: 760px) { .lp-features { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .lp-features { grid-template-columns: 1fr; } }
+
+.lp-feature {
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+}
+.lp-feature__icon {
+  width: 38px; height: 38px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 11px;
+  background: var(--surface-alt);
+  color: var(--accent-ink);
+  margin-bottom: 12px;
+}
+.lp-feature__icon svg { width: 19px; height: 19px; }
+.lp-feature h3 { font-size: 1.02rem; font-weight: 700; margin-bottom: 5px; }
+.lp-feature p { font-size: 0.9rem; color: var(--ink-soft); }
+
+/* ---------- demo callout ---------- */
+
+.lp-demo {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 28px;
+  border-radius: 20px;
+  background: var(--navy);
+  color: var(--ink-on-navy);
+  flex-wrap: wrap;
+}
+.lp-demo__text { flex: 1; min-width: 240px; }
+.lp-demo__text h2 { font-size: 1.5rem; font-weight: 600; color: var(--ink-on-navy); }
+.lp-demo__text p { color: rgba(243,236,219,0.75); margin-top: 8px; max-width: 46ch; }
+.lp-demo .btn--primary { flex: none; }
+
+/* ---------- packages ---------- */
+
+.lp-packages { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: stretch; }
+@media (max-width: 820px) { .lp-packages { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; } }
+
+.lp-package {
+  display: flex;
+  flex-direction: column;
+  padding: 26px;
+  border-radius: 20px;
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+}
+.lp-package--featured {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+.lp-package__name { font-family: "Fraunces", serif; font-size: 1.3rem; font-weight: 600; }
+.lp-package__tag { margin-top: 4px; font-size: 0.85rem; color: var(--accent-ink); font-weight: 700; }
+.lp-package__desc { margin-top: 12px; font-size: 0.92rem; color: var(--ink-soft); }
+.lp-package__list { list-style: none; margin: 18px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.lp-package__list li { display: flex; gap: 8px; align-items: flex-start; font-size: 0.9rem; }
+.lp-package__list svg { width: 15px; height: 15px; flex: none; margin-top: 3px; color: var(--accent-2-ink); }
+.lp-package .btn { margin-top: 20px; justify-content: center; }
+
+/* ---------- FAQ (reuses accordion look, defined here to avoid depending on guide.css) ---------- */
+
+.lp-faq { display: flex; flex-direction: column; gap: 10px; max-width: 720px; }
+.lp-faq details { border: 1px solid var(--border); border-radius: 14px; background: var(--surface-raised); overflow: hidden; }
+.lp-faq summary { list-style: none; cursor: pointer; padding: 16px 18px; display: flex; align-items: center; gap: 12px; font-weight: 600; }
+.lp-faq summary::-webkit-details-marker { display: none; }
+.lp-faq summary .chev { margin-left: auto; width: 18px; height: 18px; color: var(--ink-soft); transition: transform 0.2s ease; flex: none; }
+.lp-faq details[open] summary .chev { transform: rotate(180deg); }
+.lp-faq__body { padding: 0 18px 16px; font-size: 0.92rem; color: var(--ink-soft); }
+
+/* ---------- final CTA ---------- */
+
+.lp-final {
+  text-align: center;
+  padding-block: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.lp-final h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); max-width: 20ch; }
+.lp-final p { color: var(--ink-soft); max-width: 46ch; }
+
+.lp-footer {
+  padding-block: 30px 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.83rem;
+}

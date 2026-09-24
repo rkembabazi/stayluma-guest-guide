@@ -1,7 +1,8 @@
 /**
  * PROPERTY DATA — the single swap point for a new host.
  * Replace every value in this file to re-skin the guide for a different
- * property. Nothing in css/styles.css or js/app.js needs to change.
+ * property. Nothing in assets/css or assets/js needs to change.
+ * See template/data.template.js for a blank, annotated version of every field.
  */
 window.PROPERTY = {
   brand: { name: "StayLuma" },
@@ -10,11 +11,17 @@ window.PROPERTY = {
   tagline: "A restored 1900s townhouse, two minutes from the Indian Ocean.",
   location: "Shangani, Stone Town, Zanzibar, Tanzania",
   address: "12 Hurumzi Street, Shangani, Stone Town, Zanzibar",
+  mapUrl: "", // left blank on purpose — the guide auto-generates a Google Maps search link from the address
   sleeps: "Sleeps 5 · 2 bedrooms · 1.5 baths",
+
+  photos: {
+    hero: "", // left blank on purpose — shows the template's default illustration for properties without photos yet
+  },
 
   host: {
     name: "Amina Suleiman",
     initials: "AS",
+    photo: "",
     message:
       "Karibu — welcome to Casa Baraza. My grandmother's family has kept this house since 1962; we restored it in 2019 so we could share it. I hope the rooftop baraza becomes your favourite spot for morning coffee. If anything isn't as it should be, message me any time — I'm five minutes away by scooter.",
     signoff: "— Amina",
@@ -44,6 +51,16 @@ window.PROPERTY = {
       "Run the dishwasher if you used it — start button is on the top edge.",
       "Close and latch all windows (Stone Town gets sudden rain, even in dry season).",
       "Leave the key in the lockbox and give the dial a spin to scramble the code.",
+    ],
+  },
+
+  // Demonstrates the PIN-gated private section — this is privacy by
+  // obscurity, not real security, since the value still ships in this
+  // file. See docs/manual-steps-and-limitations.md.
+  private: {
+    pin: "1962",
+    fields: [
+      { label: "Rooftop safe code (for valuables)", value: "7734" },
     ],
   },
 
@@ -145,15 +162,15 @@ window.PROPERTY = {
   localGuide: {
     categories: ["Eat", "Sip & shop", "Do"],
     items: [
-      { category: "Eat", name: "Lukmaan Restaurant", description: "Zanzibari home cooking — the pilau sells out by 2pm.", tag: "4 min walk · cash only" },
-      { category: "Eat", name: "Emerson Rooftop", description: "Sunset dinner above the rooftops; book a few days ahead.", tag: "8 min walk · reservation" },
-      { category: "Eat", name: "Forodhani Night Market", description: "Seafood skewers and Zanzibari pizza from 7pm.", tag: "10 min walk · evenings only" },
-      { category: "Sip & shop", name: "Zanzibar Coffee House", description: "The best espresso in Stone Town, with rooftop seating.", tag: "3 min walk" },
-      { category: "Sip & shop", name: "Memories of Zanzibar", description: "Fair-trade spices and souvenirs, fixed prices.", tag: "5 min walk" },
-      { category: "Sip & shop", name: "Upendo Arts Gallery", description: "Small original prints from local artists.", tag: "6 min walk" },
-      { category: "Do", name: "Spice Farm Tour", description: "Half-day tour through a working spice plantation.", tag: "~$25pp · ask Amina to book" },
-      { category: "Do", name: "Sunset Dhow Cruise", description: "Traditional sailboat out of Forodhani Gardens.", tag: "Daily 5:30pm" },
-      { category: "Do", name: "Stone Town Walking Tour", description: "Two-hour guided history walk from the House of Wonders.", tag: "Starts 9am & 4pm" },
+      { category: "Eat", name: "Lukmaan Restaurant", description: "Zanzibari home cooking — the pilau sells out by 2pm.", tag: "4 min walk · cash only", mapUrl: "" },
+      { category: "Eat", name: "Emerson Rooftop", description: "Sunset dinner above the rooftops; book a few days ahead.", tag: "8 min walk · reservation", mapUrl: "" },
+      { category: "Eat", name: "Forodhani Night Market", description: "Seafood skewers and Zanzibari pizza from 7pm.", tag: "10 min walk · evenings only", mapUrl: "" },
+      { category: "Sip & shop", name: "Zanzibar Coffee House", description: "The best espresso in Stone Town, with rooftop seating.", tag: "3 min walk", mapUrl: "" },
+      { category: "Sip & shop", name: "Memories of Zanzibar", description: "Fair-trade spices and souvenirs, fixed prices.", tag: "5 min walk", mapUrl: "" },
+      { category: "Sip & shop", name: "Upendo Arts Gallery", description: "Small original prints from local artists.", tag: "6 min walk", mapUrl: "" },
+      { category: "Do", name: "Spice Farm Tour", description: "Half-day tour through a working spice plantation.", tag: "~$25pp · ask Amina to book", mapUrl: "" },
+      { category: "Do", name: "Sunset Dhow Cruise", description: "Traditional sailboat out of Forodhani Gardens.", tag: "Daily 5:30pm", mapUrl: "" },
+      { category: "Do", name: "Stone Town Walking Tour", description: "Two-hour guided history walk from the House of Wonders.", tag: "Starts 9am & 4pm", mapUrl: "" },
     ],
   },
 

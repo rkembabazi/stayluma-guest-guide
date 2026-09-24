@@ -1,0 +1,135 @@
+/* ============================================================
+   StayLuma design system — shared across every page (guides,
+   landing page, intake form). Colors, type, and base resets only.
+   Page-specific component styles live in their own stylesheet
+   (guide.css, landing.css, intake.css) and build on these tokens.
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Libre+Franklin:wght@400;500;600;700&display=swap");
+
+:root {
+  --cream: #f7efdf;
+  --sand: #ecdfc4;
+  --sand-line: #ddccaa;
+  --terracotta: #bf5b2c;
+  --terracotta-deep: #8a3f1f;
+  --olive: #6c7247;
+  --olive-deep: #4c5031;
+  --navy: #1e2a3c;
+  --navy-deep: #131c29;
+
+  --surface: var(--cream);
+  --surface-raised: #fffaf0;
+  --surface-alt: var(--sand);
+  --ink: var(--navy);
+  --ink-soft: #4a5568;
+  --ink-on-navy: #f3ecdb;
+  --accent: var(--terracotta);
+  --accent-ink: var(--terracotta-deep);
+  --accent-2: var(--olive);
+  --accent-2-ink: var(--olive-deep);
+  --border: rgba(30, 42, 60, 0.14);
+  --shadow: rgba(60, 38, 20, 0.16);
+  --focus-ring: #2f6fb5;
+  --success: #3f7a4d;
+  --danger: #b3402c;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --surface: var(--navy-deep);
+    --surface-raised: #1a2536;
+    --surface-alt: #202c40;
+    --ink: #f3ecdb;
+    --ink-soft: #c3bda8;
+    --ink-on-navy: #f3ecdb;
+    --accent: #e08a4e;
+    --accent-ink: #f3ab77;
+    --accent-2: #a7ad78;
+    --accent-2-ink: #c3c896;
+    --border: rgba(243, 236, 219, 0.16);
+    --shadow: rgba(0, 0, 0, 0.4);
+    --success: #6fbf7f;
+    --danger: #e08a76;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --surface: var(--navy-deep);
+  --surface-raised: #1a2536;
+  --surface-alt: #202c40;
+  --ink: #f3ecdb;
+  --ink-soft: #c3bda8;
+  --ink-on-navy: #f3ecdb;
+  --accent: #e08a4e;
+  --accent-ink: #f3ab77;
+  --accent-2: #a7ad78;
+  --accent-2-ink: #c3c896;
+  --border: rgba(243, 236, 219, 0.16);
+  --shadow: rgba(0, 0, 0, 0.4);
+  --success: #6fbf7f;
+  --danger: #e08a76;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  background: var(--surface);
+  color: var(--ink);
+}
+
+body {
+  margin: 0;
+  font-family: "Libre Franklin", -apple-system, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  padding-inline: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-family: "Fraunces", Georgia, "Times New Roman", serif; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+img, svg { max-width: 100%; display: block; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+
+:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -48px;
+  z-index: 100;
+  background: var(--navy);
+  color: var(--ink-on-navy);
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: top 0.15s ease;
+}
+.skip-link:focus {
+  top: 12px;
+  top: calc(env(safe-area-inset-top, 0px) + 12px);
+}
+
+.eyebrow {
+  font-family: "Libre Franklin", sans-serif;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+}
