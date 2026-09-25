@@ -30,6 +30,7 @@
   ];
 
   const FAQ = [
+    { q: "Does this replace my Airbnb or Booking.com listing?", a: "No — it sits alongside it. Your listing still handles discovery, bookings and payments; StayLuma handles everything that happens after a guest books, on a page that's entirely yours." },
     { q: "Do I need to know how to code?", a: "No — you fill out the intake form with your property's details and we handle the rest." },
     { q: "Can I update the guide later?", a: "Yes. Send us changes any time, or ask us how to edit it yourself if you're comfortable with that." },
     { q: "Is my guest's data stored anywhere?", a: "No accounts, no logins, no guest data collection — the guide is just a page your guests read." },

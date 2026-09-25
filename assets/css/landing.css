@@ -68,6 +68,13 @@
 }
 .lp-hero__meta strong { color: var(--ink); font-weight: 700; }
 
+.lp-hero__platforms {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  opacity: 0.85;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
