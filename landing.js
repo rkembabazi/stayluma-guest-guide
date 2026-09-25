@@ -7,37 +7,26 @@
   "use strict";
   const icon = window.StayLumaIcons.icon;
 
-  const FEATURES = [
-    { icon: "welcome", title: "One link, every answer", desc: "Check-in, wifi, rules, appliances, contacts, local tips — a guest finds it themselves instead of texting you." },
-    { icon: "wifi", title: "Built for a phone", desc: "Sticky navigation, big tap targets, works on a slow hotel wifi connection just as well as at home." },
-    { icon: "lock", title: "Keep access details private", desc: "Lockbox codes and other sensitive info can sit behind a simple PIN, out of the public page." },
-    { icon: "compass", title: "Your local knowledge, packaged", desc: "The recommendations only a host would know — restaurants, transport, the things guests actually ask." },
-    { icon: "printer", title: "A sign for the door", desc: "Every guide comes with a print-ready QR code guests can scan the moment they arrive." },
-    { icon: "faq", title: "Fewer 11pm messages", desc: "The questions that usually land in your inbox are already answered, before they're asked." },
+  const POINTS = [
+    { icon: "key", title: "Check-in without a phone call", desc: "The exact door, the exact code, in order — not “call me when you get there.”" },
+    { icon: "wifi", title: "Wifi they can actually copy", desc: "One tap copies the password. No squinting at a printed card taped to the fridge." },
+    { icon: "rules", title: "The rules, said once, kindly", desc: "Quiet hours, shoes off, no smoking — written so you don't have to enforce them in person." },
+    { icon: "lock", title: "Access codes, not broadcast", desc: "A lockbox or safe code sits behind a PIN, not sitting in a page search engines can index." },
+    { icon: "printer", title: "A door that points the way", desc: "A QR code guests scan the moment they arrive — no “check your email” required." },
   ];
 
-  const PACKAGES = [
-    {
-      name: "Essential",
-      tag: "One property",
-      desc: "Everything in the demo you just saw, built around your property.",
-      features: ["Full guest guide, all sections", "Mobile-first StayLuma design", "Printable QR door sign", "You provide the content via our intake form"],
-      featured: false,
-    },
-    {
-      name: "Signature",
-      tag: "One property, done for you",
-      desc: "The same guide, with us handling the setup and polish.",
-      features: ["Everything in Essential", "PIN-protected private access section", "We build the guide from your intake form", "One round of revisions with you"],
-      featured: true,
-    },
-    {
-      name: "Portfolio",
-      tag: "Multiple properties",
-      desc: "For hosts and managers running more than one listing.",
-      features: ["Everything in Signature", "Consistent branding across all guides", "One point of contact for updates", "Volume-friendly onboarding"],
-      featured: false,
-    },
+  const PACKAGES = ["Essential", "Signature", "Portfolio"];
+  const PACKAGE_TAGS = ["One property", "One property, done for you", "Multiple properties"];
+  const ROWS = [
+    { label: "Full guest guide, all sections", cells: [true, true, true] },
+    { label: "Mobile-first StayLuma design", cells: [true, true, true] },
+    { label: "Printable QR door sign", cells: [true, true, true] },
+    { label: "Content via our intake form", cells: [true, true, true] },
+    { label: "We build &amp; polish it for you", cells: [false, true, true] },
+    { label: "PIN-protected private section", cells: [false, true, true] },
+    { label: "One round of revisions", cells: [false, true, true] },
+    { label: "Consistent branding across listings", cells: [false, false, true] },
+    { label: "One contact for every property", cells: [false, false, true] },
   ];
 
   const FAQ = [
@@ -47,28 +36,34 @@
     { q: "How private is the access-code section really?", a: "It's hidden from casual view and search engines behind a PIN, but it isn't cryptographic security — it still lives on the page itself. Don't rely on it alone for anything highly sensitive." },
   ];
 
-  function renderFeatures() {
-    document.getElementById("features-grid").innerHTML = FEATURES.map(
-      (f) => `<div class="lp-feature">
-        <div class="lp-feature__icon">${icon(f.icon)}</div>
-        <h3>${f.title}</h3>
-        <p>${f.desc}</p>
+  function renderPoints() {
+    document.getElementById("points-list").innerHTML = POINTS.map(
+      (p) => `<div class="lp-point">
+        <div class="lp-point__icon">${icon(p.icon)}</div>
+        <div>
+          <h3>${p.title}</h3>
+          <p>${p.desc}</p>
+        </div>
       </div>`
     ).join("");
   }
 
-  function renderPackages() {
-    document.getElementById("packages-grid").innerHTML = PACKAGES.map(
-      (p) => `<div class="lp-package ${p.featured ? "lp-package--featured" : ""}">
-        <div class="lp-package__name">${p.name}</div>
-        <div class="lp-package__tag">${p.tag}</div>
-        <p class="lp-package__desc">${p.desc}</p>
-        <ul class="lp-package__list">
-          ${p.features.map((f) => `<li>${icon("check")}<span>${f}</span></li>`).join("")}
-        </ul>
-        <a class="btn ${p.featured ? "btn--primary" : "btn--ghost"}" href="mailto:stayluma2@gmail.com?subject=${encodeURIComponent("StayLuma " + p.name + " enquiry")}">Ask about ${p.name}</a>
-      </div>`
-    ).join("");
+  function cell(has) {
+    return has ? `<td>${icon("check")}</td>` : `<td>&mdash;</td>`;
+  }
+
+  function renderCompare() {
+    const thead = `<thead><tr>
+      <th></th>
+      ${PACKAGES.map((name, i) => `<th class="${i === 1 ? "lp-compare--featured" : ""}">${name}<span class="lp-compare__tag">${PACKAGE_TAGS[i]}</span></th>`).join("")}
+    </tr></thead>`;
+    const tbody = `<tbody>${ROWS.map(
+      (r) => `<tr>
+        <td>${r.label}</td>
+        ${r.cells.map((c, i) => (i === 1 ? cell(c).replace("<td>", `<td class="lp-compare--featured">`) : cell(c))).join("")}
+      </tr>`
+    ).join("")}</tbody>`;
+    document.getElementById("compare-table").innerHTML = thead + tbody;
   }
 
   function renderFaq() {
@@ -80,7 +75,7 @@
     ).join("");
   }
 
-  renderFeatures();
-  renderPackages();
+  renderPoints();
+  renderCompare();
   renderFaq();
 })();
